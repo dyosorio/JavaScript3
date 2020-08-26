@@ -1,3 +1,7 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-console */
+/* eslint-disable func-names */
+
 'use strict';
 
 /*
@@ -13,56 +17,55 @@ Log the received data to the console
 Incorporate error handling: log to the console the error message
 */
 
-function makeXMLHttpRequest(){
+function makeXMLHttpRequest() {
+  // 1. Create a new XMLHttpRequest object
+  const xhr = new XMLHttpRequest();
 
-    // 1. Create a new XMLHttpRequest object
-    const xhr = new XMLHttpRequest();
+  // 2. Configure it: GET-request for the URL /article/.../load
+  xhr.open('GET', 'https://www.randomuser.me/api', true);
 
-    // 2. Configure it: GET-request for the URL /article/.../load
-    xhr.open('GET', 'https://www.randomuser.me/api', true);
+  // console.log('READYSTATE: ', xhr.readyState); //1 OPEN - open() has been called.
 
-    //console.log('READYSTATE: ', xhr.readyState); //1 OPEN - open() has been called.
+  // 3. Send the request over the network
+  xhr.send();
 
-    // 3. Send the request over the network
-    xhr.send();
+  // 4. This will be called after the response is received
+  xhr.onload = function() {
+    if (xhr.status != 200) {
+      // analyze HTTP status of the response
+      console.log(xhr.responseText);
+    } else {
+      // show the result
+      console.log(xhr.responseText);
+      // console.log('READYSTATE: ', xhr.readyState); //4 DONE - The operation is complete.
+      document.getElementById('text').innerHTML = this.responseText;
+    }
+  };
 
-    // 4. This will be called after the response is received
-    xhr.onload = function () {
-        if (xhr.status != 200) {
-            // analyze HTTP status of the response
-            console.log(xhr.responseText);
-        } else {
-            // show the result
-            console.log(xhr.responseText);
-            //console.log('READYSTATE: ', xhr.readyState); //4 DONE - The operation is complete.
-            document.getElementById('text').innerHTML = this.responseText; 
-        }
-    };
+  xhr.onprogress = function() {
+    console.log('READYSTATE: ', xhr.readyState); // 3 LOADING - Downloading; responseText holds partial data.
+  };
 
-    xhr.onprogress = function (event) {
-        console.log('READYSTATE: ', xhr.readyState); //3 LOADING - Downloading; responseText holds partial data.
-    };
-
-    xhr.onerror = function () {
-        console.log('Request Failed!');
-    };
-
+  xhr.onerror = function() {
+    console.log('Request Failed!');
+  };
 }
 makeXMLHttpRequest();
 
-
-function makeAxiosRequest(){
-
-    // Make a request for a user with a given ID
-    axios.get('https://www.randomuser.me/api')
-    .then(function (response) {
-    // handle success
-    console.log(response);
-    document.getElementById('other-text').innerHTML = JSON.stringify(response); 
+function makeAxiosRequest() {
+  // Make a request for a user with a given ID
+  axios
+    .get('https://www.randomuser.me/api')
+    .then(function(response) {
+      // handle success
+      console.log(response);
+      document.getElementById('other-text').innerHTML = JSON.stringify(
+        response,
+      );
     })
-    .catch(function (error) {
-    // handle error
-    console.log(`Request Failed! ${error}`);
-    })
+    .catch(function(error) {
+      // handle error
+      console.log(`Request Failed! ${error}`);
+    });
 }
 makeAxiosRequest();

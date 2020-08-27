@@ -1,3 +1,176 @@
 /* 
   Write here your CSS rules for HackYourRepo!
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,200;1,300&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  width: 70%;
+  margin: auto;
+  border: 1px solid #b2bec3;
+}
+
+.header-container{
+  background-color: #e55039;
+  color: #ffffff;
+  padding: 2rem;
+  box-shadow: 0 8px 6px -6px rgba(170, 170, 170, 0.8);
+}
+
+.header-elements{
+ border: none;
+ display: flex;
+ flex-wrap: wrap;
+ padding-top: 2rem;
+ padding-bottom: 2rem;
+}
+
+.header-title{
+  border: none;
+  width: 30%;
+  font-size: 1.2rem;
+}
+
+.header-title p{
+  margin-right: 1rem;
+}
+
+.header-select{
+  border: none;
+  width: 70%;
+  display: flex;
+  align-content: center;
+}
+
+
+.header-select select{
+  background-color: #ffffff;
+  border: none;
+  width: 50%;
+}
+
+/*---------*/
+
+.main-container{
+  /*border: 3px solid magenta;*/
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.repo-container, .contributors-container{
+  /*border: 1px solid #b2bec3;*/
+  padding: 1rem;
+  width: 50%;
+}
+
+.repo, .contributors{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #b2bec3;
+  height: 4rem;
+}
+
+/*-----------------*/
+.bottom-container{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom-container p{
+  padding: 1rem;
+  text-align: center;
+  color: #636e72;
+}
+
+.fa-github,
+.fa-codepen{
+    margin: 1rem;
+    font-size: 1.5rem;
+    color: #636e72;
+}
+
+.fa-github:hover,
+.fa-codepen:hover{
+    color: #e55039;
+}
+
+/*---Media Queries---*/
+
+@media only screen and (max-width: 900px) {
+  body{
+    width: 100%;
+    border: none;
+  } 
+
+  .header-container{
+    padding: 1rem;
+  }
+  
+  .header-elements{
+   padding:0
+  }
+
+  .header-title{
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .header-select{
+    width: 100%;
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .header-select select{
+    width: 100%;
+  }
+
+  .main-container{
+    padding: 1rem;
+  }
+
+  .repo-container{
+    border: 1px solid #b2bec3;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .contributors-container{
+    border: 1px solid #b2bec3;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .bottom-container{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  body{
+    width: 100%;
+    border: none;
+  }
+
+  .header-title, .header-select{
+    width: 50%;
+  }
+
+
+  .bottom-container{
+    width: 100%;
+  }
+}

@@ -14,15 +14,22 @@
 <body>
 
     <div class="container my-5">
+
         <div class="text-center">
+
           <h1 class="display-4 text-center mb-3">Dog photo gallery</h1>
+
           <button class="btn btn-success my-3" id="xhr-button">XHR</button>
           <button class="btn btn-info" id="axios-button">AXIOS</button>
+          
           <div id="gallery-container">
-            <div id="xhr-list-container"><ul id="xhr-list"></ul></div>
-            <div id="axios-list-container"><ul id="axios-list"></ul></div>
+            <div id="list-container">
+              <ul id="list"></ul>
+            </div>
           </div>
+
         </div>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

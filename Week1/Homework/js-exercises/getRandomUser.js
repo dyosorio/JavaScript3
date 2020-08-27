@@ -47,7 +47,7 @@ function getRandomUserXHR(){
   };
 
   xhr.onerror = function() {
-    console.log('Request Failed!');
+    console.log('XHR Request Failed!');
   };
 }
 getRandomUserXHR();
@@ -65,7 +65,7 @@ function getRandomUserAxios() {
     })
     .catch(function(error) {
       // handle error
-      console.log(`Request Failed! ${error}`);
+      console.log(`Axios Request Failed! ${error}`);
     });
 }
 getRandomUserAxios();

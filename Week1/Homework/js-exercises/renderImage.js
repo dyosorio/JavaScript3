@@ -14,6 +14,22 @@ Log the received data to the console
 Incorporate error handling: log to the console the error message
 */
 
+function errorMessage(){
+  const errorMessage = document.createElement("p");
+  errorMessage.innerHTML = "Request Failed, haha!";
+  errorMessage.style.textAlign = "center";
+  document.body.appendChild(errorMessage);
+
+  const errorImage = document.createElement("img");
+  errorImage.src = "https://img.pngio.com/nelson-haha-png-1-png-image-nelsons-png-650_399.png";
+  errorImage.alt = "Error message";
+  errorImage.style.width = "300px";
+  errorImage.style.display = "block";
+  errorImage.style.marginLeft = "auto";
+  errorImage.style.marginRight = "auto";
+  document.body.appendChild(errorImage);
+}
+
 function renderImageXHR() {
   // 1. Create a new XMLHttpRequest object
   const xhr = new XMLHttpRequest();
@@ -49,17 +65,8 @@ function renderImageXHR() {
   };
 
   xhr.onerror = function() {
-    console.log('Request Failed!');
-    let errorEl = document.createElement("h1");
-    errorEl.innerHTML = "XHR Request Failed, haha!";
-
-    let errorImage = document.createElement("img");
-    errorImage.src = "https://img.pngio.com/nelson-haha-png-1-png-image-nelsons-png-650_399.png";
-    errorImage.alt = "Error message";
-    errorImage.display = "flex";
-    errorEl.style.textAlign = "center";
-    document.body.appendChild(errorImage);
-    document.body.appendChild(errorEl);
+    console.log('XHR Request Failed!');
+    errorMessage();
   };
 }
 renderImageXHR();
@@ -83,18 +90,9 @@ function renderImageAxios(){
     })
     .catch(function(error) {
       // handle error
-      console.log(`Haha! Request Failed! ${error}`);
+      console.log(`AXIOS Request Failed! ${error}`);
 
-      let errorMessage = document.createElement("h1");
-      errorMessage.style.textAlign = "center";
-      errorMessage.innerHTML = "Axios Request Failed, haha!";
-
-      let errorImg = document.createElement("img");
-      errorImg.src = "https://img.pngio.com/nelson-haha-png-1-png-image-nelsons-png-650_399.png";
-      errorImg.alt = "Error message";
-      errorImg.display = "flex";
-      document.body.appendChild(errorImg);
-      document.body.appendChild(errorMessage);
+      errorMessage();
     });
 }
 renderImageAxios();

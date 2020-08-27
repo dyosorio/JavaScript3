@@ -10,11 +10,12 @@ Write a function that makes a HTTP Request to https://xkcd.now.sh/?comic=latest
 Inside the same file write two programs: one with XMLHttpRequest, and the other with axios
 Each function should make a HTTP Request to the given endpoint: https://xkcd.now.sh/?comic=latest
 Log the received data to the console
-**********Render the img property into an <img> tag in the DOM**********
+**********Render the img property into an <img> tag in the DOM
 Incorporate error handling: log to the console the error message
 */
 
-function errorMessage(){
+// display error message for both the xhr and axios functions
+function displayErrorMessage(){
   const errorMessage = document.createElement("p");
   errorMessage.innerHTML = "Request Failed, haha!";
   errorMessage.style.textAlign = "center";
@@ -28,6 +29,15 @@ function errorMessage(){
   errorImage.style.marginLeft = "auto";
   errorImage.style.marginRight = "auto";
   document.body.appendChild(errorImage);
+}
+
+//display image for both the xhr and acios functions
+function displayImage(image){
+  const imageElement = document.createElement("img");
+  document.body.appendChild(imageElement);
+  imageElement.src = image;
+  imageElement.style.border = "8px solid #2ed573";
+  imageElement.style.margin = "1rem";
 }
 
 function renderImageXHR() {
@@ -50,13 +60,8 @@ function renderImageXHR() {
       console.log(xhr.responseText);
       const comicData = JSON.parse(xhr.responseText);
       const comicImage = comicData.img;
-      console.log(comicImage);
 
-      let imageEl = document.createElement("img");
-      imageEl.src = comicImage;
-      imageEl.alt = comicData.alt;
-      imageEl.style.border = "8px solid #1e90ff";
-      document.body.appendChild(imageEl);
+      displayImage(comicImage);
     }
   };
 
@@ -66,7 +71,8 @@ function renderImageXHR() {
 
   xhr.onerror = function() {
     console.log('XHR Request Failed!');
-    errorMessage();
+    
+    displayErrorMessage();
   };
 }
 renderImageXHR();
@@ -79,20 +85,17 @@ function renderImageAxios(){
     .then(function(response) {
       // handle success
       console.log(response.data);
+      const comicData = response.data;
+      const comicImage = comicData.img;
+      console.log(comicImage);
 
-      const comic = response.data;
-      const comicImg = comic.img;
-      console.log(comicImg);
-      let secondImg = document.createElement("img");
-      secondImg.src = comicImg;
-      secondImg.style.border = "8px solid #2ed573";
-      document.body.appendChild(secondImg);
+      displayImage(comicImage);
     })
     .catch(function(error) {
       // handle error
       console.log(`AXIOS Request Failed! ${error}`);
 
-      errorMessage();
+      displayErrorMessage();
     });
 }
 renderImageAxios();

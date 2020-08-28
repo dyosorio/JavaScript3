@@ -32,9 +32,10 @@
         <div class="header-select">
           <label for="selectMenu"></label>
           <select name="selectMenu" id="selectMenu">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
+            <option>select an option...</option>
+            <option value="0">Option 1</option>
+            <option value="1">Option 2</option>
+            <option value="2">Option 3</option>
           </select>
         </div>
 
@@ -44,30 +45,30 @@
     <main class="main-container">
 
       <section class="repo-container">
-        <div class="repo">
-          <p>Repository:</p>
+        <div class="repo" id="repository">
+          <p></p>
         </div>
-        <div class="repo">
-          <p>Description:</p>
+        <div class="repo" id="description">
+          <p></p>
         </div>
-        <div class="repo"><p>Forks:</p></div>
-        <div class="repo"><p>Updated</p></div>
+        <div class="repo" id="forks"><p></p></div>
+        <div class="repo" id="updated"><p></p></div>
       </section>
 
       <section class="contributors-container">
-        <div class="contributors">
+        <div class="contributors" id="contributors">
           <p>Contributors</p>
         </div>
       </section>
 
     </main>
 
-    <section class="bottom-container">
+    <footer class="footer-container">
       <p>by Danny Osorio 
         <a href="https://github.com/dyosorio" target="_blank"><i class="fab fa-github"></i></a> 
         <a href="https://codepen.io/danny-osorio" target="_blank"><i class="fab fa-codepen"></i></a>
       </p>
-    </section>
+    </footer>
 
     <script src="./script.js"></script>
   </body>

@@ -34,14 +34,7 @@ const repoContributors = document.querySelector('#contributors');
 //define what you want to happen when the <select> element's value is changed
 function displayRepoInformation(){
   //select > option > value, starting from cero:
-  const option = menuElement.value; 
-
-  //iterate through the repos 
-  for (let index = 0; index < placeHolderRepos.length; index++) {
-    const element = placeHolderRepos[index];
-
-    //display the repo that matches the selected value (const option)
-    if (option == index) {
+const index = +menuElement.value;
       repoName.innerHTML = `Repository: ${placeHolderRepos[index].name}`;
       repoDescription.innerHTML = `Description: ${placeHolderRepos[index].description}`;
       repoForks.innerHTML = `Forks: ${placeHolderRepos[index].forks}`;
